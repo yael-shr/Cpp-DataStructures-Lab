@@ -36,6 +36,15 @@
 *.exe
 *.out
 *.app
+my_project
+lab_project
+program
 
 # debug information files
 *.dwo
+# VS Code settings
+.vscode/
+
+# Windows system files
+Thumbs.db
+Desktop.ini
