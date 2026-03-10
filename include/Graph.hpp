@@ -7,21 +7,18 @@
 
 class Graph {
 private:
-    int V; // מספר הקודקודים
-    std::vector<std::list<int>> adj; // רשימת סמיכויות
-
+    int V; 
+    std::vector<std::list<int>> adj;
 public:
     Graph(int vertices) : V(vertices) {
         adj.resize(vertices);
     }
 
-    // הוספת צלע לגרף
     void addEdge(int v, int w) {
         adj[v].push_back(w);
-        adj[w].push_back(v); // גרף לא מכוון
+        adj[w].push_back(v);
     }
 
-    // אלגוריתם BFS למציאת מרחקים מקודקוד מקור
     void BFS(int s) {
         std::vector<bool> visited(V, false);
         std::queue<int> q;

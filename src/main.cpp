@@ -3,7 +3,6 @@
 #include "../include/Graph.hpp"          
 
 int main() {
-    // 1. בדיקת אלגוריתם תכנון דינמי (הקוד שלך)
     std::cout << "--- DP: Change Optimizer ---" << std::endl;
     ChangeOptimizer optimizer;
     std::vector<int> coins1 = {1, 2, 5};
@@ -11,7 +10,6 @@ int main() {
 
     std::cout << std::endl;
 
-    // 2. בדיקת אלגוריתם גרפים (BFS)
     std::cout << "--- Graph: BFS Traversal ---" << std::endl;
     Graph g(5);
     g.addEdge(0, 1);
