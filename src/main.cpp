@@ -1,22 +1,38 @@
 #include <iostream>
-#include "../include/ChangeOptimizer.hpp" 
-#include "../include/Graph.hpp"          
+#include <vector>
+#include <chrono>
+#include "ChangeOptimizer.hpp" 
+#include "Graph.hpp"         
 
 int main() {
-    std::cout << "--- DP: Change Optimizer ---" << std::endl;
-    ChangeOptimizer optimizer;
-    std::vector<int> coins1 = {1, 2, 5};
-    std::cout << "Target 11: " << optimizer.minCoins(coins1, 11) << " (Expected: 3)" << std::endl;
+    std::cout << "--- DP: Change Optimizer (Generic & Modern) ---" << std::endl;
+    
+    ChangeOptimizer<int> optimizer;
+    std::vector<int> coins = {1, 2, 5, 10, 20, 50};
+    int target = 93;
 
-    std::cout << std::endl;
+    auto start = std::chrono::high_resolution_clock::now();
+    int result = optimizer.minCoins(coins, target);
+    auto end = std::chrono::high_resolution_clock::now();
+    
+    std::chrono::duration<double, std::milli> elapsed = end - start;
 
-    std::cout << "--- Graph: BFS Traversal ---" << std::endl;
-    Graph g(5);
-    g.addEdge(0, 1);
-    g.addEdge(0, 4);
-    g.addEdge(1, 2);
-    g.addEdge(3, 4);
-    g.BFS(0);
+    std::cout << "Target " << target << ": " << result << " coins." << std::endl;
+    std::cout << "Execution time: " << elapsed.count() << " ms" << std::endl;
+
+    std::cout << "\n-------------------------------------------\n" << std::endl;
+
+    std::cout << "--- Graph: BFS Traversal (Generic Nodes) ---" << std::endl;
+    
+    Graph<std::string> g;
+    g.addEdge("Home", "Library");
+    g.addEdge("Home", "Park");
+    g.addEdge("Library", "University");
+    g.addEdge("Park", "Station");
+    g.addEdge("Station", "University");
+
+    g.BFS("Home");
+    g.printShortestDistance("Home", "University");
 
     return 0;
 }
