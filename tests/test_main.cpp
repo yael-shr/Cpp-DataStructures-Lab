@@ -12,27 +12,22 @@ void test_optimizer() {
     std::cout << "Optimizer tests passed!" << std::endl;
 }
 
-void test_graph_edge_cases() {
+void test_graph_logic() {
     Graph<int> g;
-
-    std::cout << "Testing: Path between non-existent nodes..." << std::endl;
-    g.printShortestDistance(99, 100); 
-
+    
     g.addEdge(1, 2);
     g.addEdge(3, 4);
-    std::cout << "Testing: Disconnected components..." << std::endl;
-    g.printShortestDistance(1, 4);
 
-    std::cout << "Testing: Self-loop distance..." << std::endl;
-    g.printShortestDistance(1, 1);
+    assert(g.getShortestDistance(1, 2) == 1);
+    
+    assert(g.getShortestDistance(1, 4) == -1); 
+    
+    assert(g.getShortestDistance(1, 99) == -1);
 
-    std::cout << "Testing: Large vertex IDs..." << std::endl;
-    g.addEdge(0, 1000000);
-    g.printShortestDistance(0, 1000000);
+    assert(g.getShortestDistance(1, 1) == 0);
 
-    std::cout << "Graph edge case tests completed!" << std::endl;
+    std::cout << "All Graph assertions passed!" << std::endl;
 }
-
 int main() {
     test_optimizer();
     test_graph();
