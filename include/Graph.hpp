@@ -45,7 +45,7 @@ public:
         std::cout << std::endl;
     }
 
-    void printShortestDistance(T s, T dest) const {
+    int printShortestDistance(T s, T dest) const {
         std::unordered_map<T, int> dist;
         for (const auto& pair : *adj) {
             dist[pair.first] = -1;
@@ -75,6 +75,7 @@ public:
             std::cout << "Shortest distance between " << s << " and " << dest << " is: " << dist[dest] << std::endl;
         }
     }
+  return dist[dest];
 };
 
 #endif
