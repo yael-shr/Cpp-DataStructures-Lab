@@ -1,6 +1,6 @@
 #include <iostream>
-#include "ChangeOptimizer.hpp"
-#include "Graph.hpp" // הקובץ שיצרנו קודם
+#include "../include/ChangeOptimizer.hpp" 
+#include "../include/Graph.hpp"          
 
 int main() {
     // 1. בדיקת אלגוריתם תכנון דינמי (הקוד שלך)
